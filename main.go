@@ -31,6 +31,7 @@ func BufWriterFile(ff string, mes string) {
 	writer.Flush()
 }
 
+//这里需要通过offset来改进下性能, 现在这种写法性能太低
 func ReadLine(ff string, lineNumber int) string {
 	file, _ := os.OpenFile(ff, os.O_RDONLY, 0751)
 	fileScanner := bufio.NewScanner(file)
@@ -63,16 +64,16 @@ func merge(fnum int) {
 	var minStr string
 	var cnt, minFile int
 	var err error
-	var leaf, sum int
+	var leaf int
 	res := &tools.DictHeap{}
-	temp := 1
-	for {
-		if sum + temp >= topn {
-			leaf = sum
-			break
+	temp := topn
+	for  {
+		if 2 * temp + 1 > topn {
+			temp --
+			continue
 		}
-		sum += temp
-		temp *= 2
+		leaf = temp + 1
+		break
 	}
 	for {
 		flag := 0
@@ -183,7 +184,7 @@ func main() {
 			panic(err)
 		}
 	}
+	fmt.Println("dispatch finishied")
 	merge(fcnt)
 	fp.Close()
-	fmt.Println("dispatch finishied")
 }
