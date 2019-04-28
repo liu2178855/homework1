@@ -8,7 +8,7 @@ import (
 )
 
 func Test_ReadLine(t *testing.T) {
-	fp, err := os.OpenFile("haha", os.O_RDONLY, 0751)
+	fp, err := os.OpenFile("testdata", os.O_RDONLY, 0751)
 	if err != nil {
 		t.Error("按行读取打开失败")
 	}

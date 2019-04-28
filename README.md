@@ -1,10 +1,12 @@
 ## 安装
 
 	go build main.go
+## 测试
+	go test -v main.go homework_test.go
 
 ## 使用
 
-	./main --file=benchmark --maxmem=1073741824 --topn=100
+	./main --file=testdata --maxmem=524288 --topn=10 
 
 ## 思路
 
