@@ -1,8 +1,8 @@
 ## 安装
 
-	go build main.go
+	go build homework.go
 ## 测试
-	go test -v main.go homework_test.go
+	go test -v homework.go homework_test.go
 
 ## 使用
 
